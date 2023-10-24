@@ -53,7 +53,7 @@ function ImageSelectGrid({number}) {
                     }
                 }} >
 
-                <img src={"/images/image" + number + "/" + i + ".jpg"} alt='food' className='grid_image' />
+                <img src={"./images/image" + number + "/" + i + ".jpg"} alt='food' className='grid_image' />
                 {(selected[i] != null) && <div className='text_overlay'>{selected[i]}</div>}
             </div>
         )
