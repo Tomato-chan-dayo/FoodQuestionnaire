@@ -106,7 +106,7 @@ export default function Page() {
 
     return (
         <div>
-        <form ref={formRef} target='hidden' action={actionURL}>
+        <form ref={formRef} action={actionURL}>
             <div className='content'>
                 <Header />
                 <Sex _ref={sexRef} />
@@ -131,7 +131,7 @@ export default function Page() {
                 }}>送信</button>
             </div>
         </form>
-        <iframe name='hidden'></iframe>
+        <iframe name='hidden' className='hidden-inputs'></iframe>
         </div>
     )
 }
