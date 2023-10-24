@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/FoodQuestionnaire/static/css/main.41d9355a.css",
+    "main.js": "/FoodQuestionnaire/static/js/main.5a079fe9.js",
+    "index.html": "/FoodQuestionnaire/index.html",
+    "main.41d9355a.css.map": "/FoodQuestionnaire/static/css/main.41d9355a.css.map",
+    "main.5a079fe9.js.map": "/FoodQuestionnaire/static/js/main.5a079fe9.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.41d9355a.css",
+    "static/js/main.5a079fe9.js"
+  ]
+}
