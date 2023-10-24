@@ -10,7 +10,7 @@ body {
 
 .content {
   max-width: 100%;
-  width: 600px;
+  width: 640px;
   margin: 0 auto;
 }
 
@@ -53,7 +53,7 @@ body {
 
 
 .question {
-  padding-bottom: 26px;
+  padding-bottom: 16px;
 }
 
 .question.required::after {
@@ -68,6 +68,23 @@ body {
   margin-bottom: 10px;
   border-radius: 10px;
   border: 1px solid lightgray;
+  position: relative;
+}
+
+.section:has(.title) {
+  padding: 22px 24px 16px;
+}
+
+.section:has(.title)::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  top: -1px;
+  left: 0;
+  height: 10px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  background-color: rgb(103, 58, 183);
 }
 
 .radio-button {
@@ -126,4 +143,31 @@ body {
   top:0px;
   left: 0px;
   visibility:hidden;
+}
+
+.title {
+  font-size: 24pt;
+  font-weight: 400;
+  line-height: 135%;
+}
+
+.title_description {
+  font-size: 11pt;
+  line-height: 15pt;
+  font-weight: 400;
+  margin: 12px 0;
+}
+
+.bar {
+  width: 100%;
+  background-color: rgb(218,220,224);
+  position: absolute;
+  height: 1px;
+  left: 0;
+}
+
+.required_description {
+  color:rgb(217,48,37);
+  font-size: 14px;
+  margin-top: 24px;
 }

@@ -1,12 +1,17 @@
-import React, { StrictMode } from "react";
+import React, { StrictMode, useState } from "react";
 import { createRoot } from "react-dom/client";
 import "./styles.css";
+import App from "./App"
+import { CookiesProvider } from "react-cookie";
 
-import App from "./App";
 
 const root = createRoot(document.getElementById("root"));
+const title = "どの写真が美味しそうに見えるかのアンケート"
+document.title = title
 root.render(
   <StrictMode>
-    <App />
+    <CookiesProvider>
+      <App title={title}/>
+    </CookiesProvider>
   </StrictMode>
 );
