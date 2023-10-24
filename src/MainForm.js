@@ -269,6 +269,7 @@ export default function Page({ title, setSubmitted }) {
     const sexRef = useRef(null)
     const formRef = useRef()
     const imageSelectGrids = []
+    const [sending,setSending] = useState(false)
 
     for (let i = 0; i < formData.length; i++) {
         imageSelectGrids.push(
@@ -285,6 +286,10 @@ export default function Page({ title, setSubmitted }) {
                 action={actionURL}
                 target='hidden'
                 onSubmit={(event) => {
+                    if(sending) {
+                        event.preventDefault()
+                        return
+                    }
                     if (formRef.current['entry.' + sexFormNumber].value == '') {
                         sexRef.current.scrollIntoView({ behavior: 'smooth' })
                         event.preventDefault()
@@ -300,13 +305,14 @@ export default function Page({ title, setSubmitted }) {
                             }
                         }
                     }
+                    setSending(true)
                 }}>
                 <div className='content'>
                     <Header title={title} />
                     <Sex _ref={sexRef} />
                     {imageSelectGrids}
                     <div className='section'>ご協力ありがとうございました。</div>
-                    <button className='send'>送信</button>
+                    <button className='send'>{sending ? '送信中': '送信'}</button>
                 </div>
             </form>
             <iframe name='hidden' className='hidden-inputs' onLoad={() => setSubmitted(true)}></iframe>
