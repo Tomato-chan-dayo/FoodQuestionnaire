@@ -7,7 +7,7 @@ import { CookiesProvider } from "react-cookie";
 
 const root = createRoot(document.getElementById("root"));
 const title = "どの写真が美味しそうに見えるかのアンケート"
-document.title = title
+//document.title = title
 root.render(
   <StrictMode>
     <CookiesProvider>
