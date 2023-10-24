@@ -220,6 +220,10 @@ function ImageSelectGrid({number}) {
                         const next = selected.slice()
                         next[i] = next.filter(it => it != null).length + 1
                         setSelected(next)
+                    } else if(selected[i] == selected.filter(it => it != null).length) {
+                        const next = selected.slice()
+                        next[i] = null
+                        setSelected(next)
                     }
                 }} >
 
