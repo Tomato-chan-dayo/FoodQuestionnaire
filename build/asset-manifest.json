@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/FoodQuestionnaire/static/css/main.41d9355a.css",
-    "main.js": "/FoodQuestionnaire/static/js/main.5a079fe9.js",
-    "index.html": "/FoodQuestionnaire/index.html",
-    "main.41d9355a.css.map": "/FoodQuestionnaire/static/css/main.41d9355a.css.map",
-    "main.5a079fe9.js.map": "/FoodQuestionnaire/static/js/main.5a079fe9.js.map"
+    "main.css": "./static/css/main.41d9355a.css",
+    "main.js": "./static/js/main.6d30ea3a.js",
+    "index.html": "./index.html",
+    "main.41d9355a.css.map": "./static/css/main.41d9355a.css.map",
+    "main.6d30ea3a.js.map": "./static/js/main.6d30ea3a.js.map"
   },
   "entrypoints": [
     "static/css/main.41d9355a.css",
-    "static/js/main.5a079fe9.js"
+    "static/js/main.6d30ea3a.js"
   ]
 }

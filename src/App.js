@@ -1,4 +1,4 @@
-import { createRef, forwardRef, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 
 const actionURL = 'https://docs.google.com/forms/u/0/d/e/1FAIpQLSf2uNpso_RkpQndOCGISdb_r_LK1AErnXiW5y5Bf-faWPHEbA/formResponse'
 const sexFormNumber = 1023523879
@@ -85,7 +85,7 @@ function ReasonInput({number}) {
     return (
         <div className='section'>
             <p className='question'>上の写真についてその順番にした理由を教えてください。一部の写真の理由でも大丈夫です。<br />例)1はなんの料理かよくわからなかったから最も美味しそうではないにした。</p>
-            <input name={'entry.'+formData[number][9]} rows="4" className='reason-input' ></input>
+            <textarea name={'entry.'+formData[number][9]} rows="4" className='reason-input' />
         </div>
     )
 }
