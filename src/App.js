@@ -6,6 +6,7 @@ export default function Page({title}) {
     const [cookies, setCookie, removeCookie] = useCookies(["submitted"]);
     const setter = (b) => {
         setCookie('submitted',b,{maxAge:'2592000'})
+        console.log('submit')
     }
     if(cookies.submitted) {
         return <Thanks title={title}/>

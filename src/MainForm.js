@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 
-/*const actionURL = 'https://docs.google.com/forms/u/0/d/e/1FAIpQLSf2uNpso_RkpQndOCGISdb_r_LK1AErnXiW5y5Bf-faWPHEbA/formResponse'
+const actionURL = 'https://docs.google.com/forms/u/0/d/e/1FAIpQLSf2uNpso_RkpQndOCGISdb_r_LK1AErnXiW5y5Bf-faWPHEbA/formResponse'
 const sexFormNumber = 1023523879
 const formData = [[
     1185269914,
@@ -13,7 +13,8 @@ const formData = [[
     1267656677,
     1991915155,
     1653079034
-]]*/
+]]
+/*
 const actionURL = 'https://docs.google.com/forms/u/0/d/e/1FAIpQLSfFqtLMJZUSMH3BgoAUSuMfvtGmCGbzREW8vUFuaqeIckBuvg/formResponse'
 const sexFormNumber = 2044093388
 const formData = [
@@ -186,8 +187,8 @@ const formData = [
         471395532
         ]
 ]
-
-function Header({title}) {
+*/
+function Header({ title }) {
     return (
         <div className='section'>
             <div className='title'>{title}</div>
@@ -198,7 +199,7 @@ function Header({title}) {
     )
 }
 
-function Sex({_ref}) {
+function Sex({ _ref }) {
     return (<div className='section' ref={_ref}>
         <p className='question required'>性別を教えてください</p>
         <label className='checkbox-container'><input className='radio-button' type='radio' name={'entry.' + sexFormNumber} value='女性' />女性</label>
@@ -207,8 +208,8 @@ function Sex({_ref}) {
     </div>)
 }
 
-function ImageSelectGrid({number}) {
-    const [selected,setSelected] = useState(Array(9).fill(null))
+function ImageSelectGrid({ number }) {
+    const [selected, setSelected] = useState(Array(9).fill(null))
     const images = []
     const inputs = []
     for (let i = 0; i < 9; i++) {
@@ -220,7 +221,7 @@ function ImageSelectGrid({number}) {
                         const next = selected.slice()
                         next[i] = next.filter(it => it != null).length + 1
                         setSelected(next)
-                    } else if(selected[i] == selected.filter(it => it != null).length) {
+                    } else if (selected[i] == selected.filter(it => it != null).length) {
                         const next = selected.slice()
                         next[i] = null
                         setSelected(next)
@@ -231,8 +232,8 @@ function ImageSelectGrid({number}) {
                 {(selected[i] != null) && <div className='text_overlay'>{selected[i]}</div>}
             </div>
         )
-        inputs.push(<input key={i}  type='checkbox' name={'entry.' + formData[number][i]} value={selected[i] != null ?selected[i] :'' } onChange={()=>{}} checked={true} />)
-       
+        inputs.push(<input key={i} type='checkbox' name={'entry.' + formData[number][i]} value={selected[i] != null ? selected[i] : ''} onChange={() => { }} checked={true} />)
+
     }
 
     return (
@@ -255,16 +256,16 @@ function ImageSelectGrid({number}) {
     )
 }
 
-function ReasonInput({number}) {
+function ReasonInput({ number }) {
     return (
         <div className='section'>
             <p className='question'>上の写真についてその順番にした理由を教えてください。一部の写真の理由でも大丈夫です。<br />例)1はなんの料理かよくわからなかったから最も美味しそうではないにした。</p>
-            <textarea name={'entry.'+formData[number][9]} rows="4" className='reason-input' />
+            <textarea name={'entry.' + formData[number][9]} rows="4" className='reason-input' />
         </div>
     )
 }
 
-export default function Page({title,setSubmitted}) {
+export default function Page({ title, setSubmitted }) {
     const sexRef = useRef(null)
     const formRef = useRef()
     const imageSelectGrids = []
@@ -277,36 +278,38 @@ export default function Page({title,setSubmitted}) {
             </div>)
     }
 
-
     return (
         <div>
-        <form ref={formRef} action={actionURL} target='hidden'>
-            <div className='content'>
-                <Header title={title} />
-                <Sex _ref={sexRef} />
-                {imageSelectGrids}
-                <div className='section'>ご協力ありがとうございました。</div>
-                <button type='button' className='send' onClick={() => {
-                    
+            <form
+                ref={formRef}
+                action={actionURL}
+                target='hidden'
+                onSubmit={(event) => {
                     if (formRef.current['entry.' + sexFormNumber].value == '') {
                         sexRef.current.scrollIntoView({ behavior: 'smooth' })
+                        event.preventDefault()
                         return
                     }
 
-                    for(let i = 0;i < formData.length;i++) {
-                        for (let i2 = 0;i2 < 9;i2++) {
-                            if(formRef.current['entry.'+formData[i][i2]].value == '') {
-                                formRef.current['entry.'+formData[i][i2]].scrollIntoView({behavior:'smooth'})
+                    for (let i = 0; i < formData.length; i++) {
+                        for (let i2 = 0; i2 < 9; i2++) {
+                            if (formRef.current['entry.' + formData[i][i2]].value == '') {
+                                formRef.current['entry.' + formData[i][i2]].scrollIntoView({ behavior: 'smooth' })
+                                event.preventDefault()
                                 return
                             }
                         }
                     }
-                    formRef.current.submit()
-                    setSubmitted(true)
-                }}>送信</button>
-            </div>
-        </form>
-        <iframe name='hidden' className='hidden-inputs'></iframe>
+                }}>
+                <div className='content'>
+                    <Header title={title} />
+                    <Sex _ref={sexRef} />
+                    {imageSelectGrids}
+                    <div className='section'>ご協力ありがとうございました。</div>
+                    <button className='send'>送信</button>
+                </div>
+            </form>
+            <iframe name='hidden' className='hidden-inputs' onLoad={() => setSubmitted(true)}></iframe>
         </div>
     )
 }
