@@ -4,6 +4,12 @@
   padding: 0px;
 }
 
+img {
+	user-drag: none;
+	-webkit-user-drag: none;
+	-moz-user-select: none;
+}
+
 body {
   background-color: #e6e6fa;
 }
