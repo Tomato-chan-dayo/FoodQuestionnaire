@@ -8,7 +8,7 @@ export default function Page({title}) {
         setCookie('submitted',b,{maxAge:'2592000'})
         console.log('submit')
     }
-    if(cookies.submitted) {
+    if(false) {
         return <Thanks title={title}/>
     } else {
         return <MainForm title = {title} setSubmitted={setter}/>
