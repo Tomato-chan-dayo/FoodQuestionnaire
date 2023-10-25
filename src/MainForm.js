@@ -443,10 +443,10 @@ export default function Page({ title, setSubmitted }) {
                 action={actionURL}
                 target='hidden'
                 onSubmit={(event) => {
-                    /*if(sending) {
+                    if(sending) {
                         event.preventDefault()
                         return
-                    }*/
+                    }
                     if (formRef.current['entry.' + sexFormNumber].value == '') {
                         sexRef.current.scrollIntoView({ behavior: 'smooth' })
                         event.preventDefault()
